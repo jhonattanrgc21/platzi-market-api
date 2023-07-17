@@ -11,8 +11,10 @@ public class Product {
     private Integer id;
     @Column(name = "nombre")
     private String name;
-    @Column(name = "id_categoria")
-    private Integer cateforyId;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Category cateforyId;
     @Column(name = "codigo_barras")
     private String barcode;
     @Column(name = "precio_venta")
@@ -41,11 +43,11 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getCateforyId() {
+    public Category getCateforyId() {
         return cateforyId;
     }
 
-    public void setCateforyId(Integer cateforyId) {
+    public void setCateforyId(Category cateforyId) {
         this.cateforyId = cateforyId;
     }
 

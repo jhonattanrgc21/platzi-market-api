@@ -3,6 +3,7 @@ package com.platzi.marcket.persistence.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "compras")
@@ -12,8 +13,9 @@ public class Shopping {
     @Column(name = "id_compra")
     private Integer id;
 
-    @Column(name = "id_cliente")
-    private Integer clientId;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Client clientId;
 
     @Column(name = "fecha")
     private LocalDateTime date;
@@ -26,6 +28,9 @@ public class Shopping {
     @Column(name = "estado")
     private String state;
 
+    @OneToMany(mappedBy = "product")
+    private List<ProductShopping> productList;
+
     public Shopping() {
     }
 
@@ -37,11 +42,11 @@ public class Shopping {
         this.id = id;
     }
 
-    public Integer getClientId() {
+    public Client getClientId() {
         return clientId;
     }
 
-    public void setClientId(Integer clientId) {
+    public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
 
@@ -75,5 +80,13 @@ public class Shopping {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public List<ProductShopping> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<ProductShopping> productList) {
+        this.productList = productList;
     }
 }

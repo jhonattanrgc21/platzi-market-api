@@ -2,6 +2,8 @@ package com.platzi.marcket.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categorias")
 public class Category {
@@ -15,6 +17,10 @@ public class Category {
 
     @Column(name = "estado")
     private Boolean state;
+
+    @OneToMany(mappedBy = "cateforyId" )
+    private List<Product> productList;
+
 
     public Category() {
     }
@@ -41,6 +47,14 @@ public class Category {
 
     public void setState(Boolean state) {
         this.state = state;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }
 
