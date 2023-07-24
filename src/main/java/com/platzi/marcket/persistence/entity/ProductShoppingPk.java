@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Embeddable
 public class ProductShoppingPk  implements Serializable {
     @Column(name = "id_compra")
-    private Integer shippingId;
+    private Integer shoppingId;
 
     @Column(name = "id_producto")
     private Integer productId;
@@ -15,12 +15,12 @@ public class ProductShoppingPk  implements Serializable {
     public ProductShoppingPk() {
     }
 
-    public Integer getShippingId() {
-        return shippingId;
+    public Integer getShoppingId() {
+        return shoppingId;
     }
 
-    public void setShippingId(Integer shippingId) {
-        this.shippingId = shippingId;
+    public void setShoppingId(Integer shoppingId) {
+        this.shoppingId = shoppingId;
     }
 
     public Integer getProductId() {

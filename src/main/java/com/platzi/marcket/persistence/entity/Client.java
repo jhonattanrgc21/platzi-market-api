@@ -8,33 +8,39 @@ import java.util.List;
 @Table(name = "clientes")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    private String id;
 
     @Column(name = "nombre")
     private String firstName;
-    @Column(name = "apellido")
+    @Column(name = "apellidos")
     private String lastName;
     @Column(name = "celular")
-    private int phone;
+    private Long phone;
     @Column(name = "direccion")
     private String address;
-    @Column(name = "correo")
+    @Column(name = "correo_electronico")
     private String email;
 
-    @OneToMany(mappedBy = "clientId")
+    @OneToMany(mappedBy = "client")
     private List<Shopping> shoppingList;
 
     public Client() {
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Shopping> getShoppingList() {
+        return shoppingList;
+    }
+
+    public void setShoppingList(List<Shopping> shoppingList) {
+        this.shoppingList = shoppingList;
     }
 
     public String getFirstName() {
@@ -53,11 +59,11 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public int getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

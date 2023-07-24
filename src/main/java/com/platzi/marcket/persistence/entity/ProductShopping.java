@@ -3,12 +3,12 @@ package com.platzi.marcket.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "compras_producto")
+@Table(name = "compras_productos")
 public class ProductShopping {
     @EmbeddedId
     private ProductShoppingPk id;
     @Column(name = "cantidad")
-    private Integer count;
+    private Integer quantity;
 
     @Column(name = "total")
      private Double total;
@@ -17,6 +17,7 @@ public class ProductShopping {
     private Boolean state;
 
     @ManyToOne
+    @MapsId("id")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Shopping shopping;
 
@@ -35,12 +36,12 @@ public class ProductShopping {
         this.id = id;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Double getTotal() {
@@ -57,5 +58,21 @@ public class ProductShopping {
 
     public void setState(Boolean state) {
         this.state = state;
+    }
+
+    public Shopping getShopping() {
+        return shopping;
+    }
+
+    public void setShopping(Shopping shopping) {
+        this.shopping = shopping;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

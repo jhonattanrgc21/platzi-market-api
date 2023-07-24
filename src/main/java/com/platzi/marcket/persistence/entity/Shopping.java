@@ -13,9 +13,12 @@ public class Shopping {
     @Column(name = "id_compra")
     private Integer id;
 
+    @Column(name = "id_cliente")
+    private String clientId;
+
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
-    private Client clientId;
+    private Client client;
 
     @Column(name = "fecha")
     private LocalDateTime date;
@@ -28,8 +31,8 @@ public class Shopping {
     @Column(name = "estado")
     private String state;
 
-    @OneToMany(mappedBy = "product")
-    private List<ProductShopping> productList;
+    @OneToMany(mappedBy = "shopping", cascade = CascadeType.ALL)
+    private List<ProductShopping> productShopping;
 
     public Shopping() {
     }
@@ -42,12 +45,28 @@ public class Shopping {
         this.id = id;
     }
 
-    public Client getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(Client clientId) {
+    public void setClientId(String clientId) {
         this.clientId = clientId;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public List<ProductShopping> getProductShopping() {
+        return productShopping;
+    }
+
+    public void setProductShopping(List<ProductShopping> productShopping) {
+        this.productShopping = productShopping;
     }
 
     public LocalDateTime getDate() {
@@ -82,11 +101,5 @@ public class Shopping {
         this.state = state;
     }
 
-    public List<ProductShopping> getProductList() {
-        return productList;
-    }
 
-    public void setProductList(List<ProductShopping> productList) {
-        this.productList = productList;
-    }
 }

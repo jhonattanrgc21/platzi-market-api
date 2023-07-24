@@ -18,7 +18,7 @@ public class Category {
     @Column(name = "estado")
     private Boolean state;
 
-    @OneToMany(mappedBy = "cateforyId" )
+    @OneToMany(mappedBy = "category" )
     private List<Product> productList;
 
 
